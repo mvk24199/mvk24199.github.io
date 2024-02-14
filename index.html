@@ -2,20 +2,200 @@
 <html>
 <head>
 <meta charset="utf-8">
+<style> 
+	body{background-color: powderblue;}
+	h1 {color: blue;}
+</style>
 <title>WAPH-madavava</title>
+<link rel="stylesheet" href=https://waph-uc.github.io/style1.css>
+<style type="text/css">	
+	.button{
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 5px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	.round{border-radius: 8px;}
+	#response{background-color: #ff9800;} /* Orange */
+</style>
 </head>
 <body>
-<div id="top">	
-  <h1>Web Application Programming and Hacking</h1>
-  <h2>Front-end Web Development Individual Project</h2> 
-  <h3>Instructor: Dr. Phu Phung</h3>
+<div class="container-wrapper">
+<div id="top">
+	<h1>Introduction to Web Application Programming and Hacking</h1>
+	<h2>Front-end Development Lab</h2>
+	<h3>Instructor: Dr.Phu Phung</h3>
 </div>
+<div class="wrapper">
 <div id="menubar">
-  <h3>Student: Vamsi Krishna Madavarapu</h3>
+	<h3>Student Name: Vamsi Krishna Madavarapu</h3>
+	<div id="email"   onclick="showhideEmail()">Show my email</div>
+	<script src="email.js"></script>
+	<img src="./images/headshot.png" alt="Vamsi's headshot" width="50">
+	<div id="digital-clock"></div>
+	<script type="text/javascript">
+		function displayTime()
+		{
+			document.getElementById('digital-clock').innerHTML= "Current Time: " + new Date();
+		}
+		setInterval(displayTime,500);
+	</script>
+
+	<div id="clock">
+		<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+		<script src="https://waph-uc.github.io/clock.js"></script>
+		<script>
+		var canvas = document.getElementById("analog-clock");
+		var ctx = canvas.getContext("2d");
+		var radius = canvas.height / 2;
+		ctx.translate(radius, radius);
+		radius = radius * 0.90
+		setInterval(drawClock, 1000); 
+
+
+		function drawClock()
+		{
+			drawFace(ctx, radius);
+			drawNumbers(ctx, radius);
+			drawTime(ctx, radius);	
+		}
+		</script>
+	</div>
 </div>
 <div id="main">
-  <p>A simple HTML page </p>
-  Using the <a href="https://www.w3schools.com/html"> W3Schools template</a>	
+	<p>My name is Vamsi Krishna Madavarapu, a student of MSIT at UC</p>
+	<p>I'm using the <a href="https://github.com/mvk24199/waph-madavava">github repo</a> to store my code</p>
+</div>
+
+<script type="text/javascript">
+	function validateInput()
+	{
+		var inputValue = document.getElementById('data-get').value;
+		if(inputValue.trim() === ''){
+			alert('Input cannot be null, Enter a value');
+			return false;
+		}
+	}
+
+	function encodeInput(input)
+	{
+		const encodedData = document.createElement('div');
+		encodedData.innerText=input;
+		return encodedData.innerHTML;
+	}
+</script>
+
+<hr>
+<b>Interaction with forms</b>
+<div id="form">
+	<i> Form with an HTTP GET Request</i>
+	<form action="echo.php" method="GET" onsubmit="return validateInput('data-get')">
+		Your Name: <input type="text" name="data" id="data-get" onkeyup="console.log('You have pressed a Key')">
+		<input type="submit" value="Submit">
+	</form>
+</div>
+<hr>
+<b>Interaction with forms using POST method</b>
+<div id="form">
+	<i> Form with an HTTP POST Request</i>
+	<form action="echo.php" method="POST" onsubmit="return validateInput('data-post')">
+		Your Name: <input name="data" id="data-post" onkeyup="console.log('You have pressed a Key')">
+		<input type="submit" Value="Submit">
+	</form>
+</div>
+<hr>
+
+<b>Experiment with JS</b>
+<i>Inlined Javascript</i>
+<div id="date" onclick="document.getElementById('date').innerText=Date()">Click Here to view the date</div>
+
+<hr>
+<div>
+	<i> Ajax requests </i><br>
+	Your input:
+	<input name="data" onkeypress="console.log('You have pressed a key')" id="data" >
+	<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
+	<input class="button round" type="button" value="jQuery Ajax Get" onclick="jQueryAjax()">
+	<input class="button round" type="button" value="jQuery Ajax Post" onclick="jQueryAjaxPost()">
+	<input class="button round" type="button" value="Guess age" onClick="guessAge($('#data').val())">
+	<div id="response"></div>
+<script type="text/javascript">
+	function getEcho(){
+		var input = document.getElementById("data").value;
+		if(input.length == 0)
+		{
+			return;
+		}
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status==200){
+				console.log("Received data"+ xhttp.responseText);
+				document.getElementById("response").innerHTML = encodeInput(xhttp.responseText);
+			}
+		}
+		xhttp.open("GET","echo.php?data="+input,true);
+		xhttp.send();
+		document.getElementById("data").value ="";
+
+	}
+</script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+function jQueryAjax(){
+	var input = $("#data").val();
+	if (input.length == 0) return;
+	$.get("echo.php?data="+input,function(result){
+		printResult(result);
+	}
+	);
+	$("#data").val("");
+}	
+
+function printResult(result){
+	$("response").html(encodeInput(result));
+}
+
+function jQueryAjaxPost(){
+	var input = $("#data").val();
+	if (input.length == 0) return;
+	$.post("echo.php",{data:input},function(result){
+		printResult(result);
+	}
+	);
+	$("#data").val("");
+}	
+
+$.get("https://v2.jokeapi.dev/joke/Programming?type=single",function(result){
+				$("#response").html("Programming joke of the day: " +result.joke);
+				});
+	if(result && result.joke){
+		var encodedJoke = encodeInput(result.joke);
+		$("#response").text("Programming Joke of the day:" +encodedJoke);
+	}
+	else{
+		$("#response").text("Could not retrieve joke at this moment");
+
+	}
+			async function guessAge(name){
+				if(name==null || name.trim() === '')
+				{
+					return $("#response").text("Kindly enter a valid name");
+				}
+				const response= await fetch("https://api.agify.io/?name="+name);
+				const result= await response.json();
+				if(result.age==null || result.age==0)
+					return $("#response").text("Sorry, the server threw an error and cannot retrieve your age");
+				$("#response").html("Hello "+name+" ,your age should be "+result.age);
+			}
+</script>
+</div>
 </div>
 </body>
 </html>
