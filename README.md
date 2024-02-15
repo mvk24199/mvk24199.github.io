@@ -6,7 +6,7 @@
 
 ## Student mail: madavava@mail.uc.edu
 
-![Vamsi's headshot](img/hero-bg.png){width=150px height=150px}
+![Vamsi's headshot](assets/img/hero-bg.jpg){width=150px height=150px}
 
 # Individual Project 1 - Front-end Web Development 
 
@@ -46,15 +46,17 @@ The Weatherbit API is a public API and in order to use that we have to generate 
 
 Flag counter website is integrated into index.html and it is a free counter that adds a new country flag whenever someone new views the page. 
 
+![Javascript work](assets/img/SS0.png)
+
 Cookies are enabled internally within the website and the main motto behind that is let the users know that they have visited this page already at a particular timestamp. Initially when a user visits the page it displays a Welcome message and whenever a user revisits the same site it displays a message "welcome back" followed by the previous timestamp. For better usablilty, the lifepeiod of cookies is set to 30 days.
 
 
-![Welcome alert to the website](/assets/img/SS1.png)
+![Welcome alert to the website](assets/img/SS1.png)
 
-![Welcome Back](/assets/img/SS2.png)
+![Welcome Back](assets/img/SS2.png)
 
 In addition to that, I have intergrated a gif in my website using react js and the button has two options to hide/show the gif. Whenever user click on show gif, it displays the gif in a frame and later it provides a hide gif button using which the gif screen can be minimized.
 
-![Show Gif](/assets/img/SS3.png)
+![Show Gif](assets/img/SS3.png)
 
-![Hide Gif](/assets/img/SS4.png)
+![Hide Gif](assets/img/SS4.png)
