@@ -5,6 +5,11 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <meta charset="UTF-8">
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
   <title>Vamsi Krishna Madavarapu Portfolio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -357,7 +362,7 @@
 		      <p>Page tracker</p>
 		      <a href="https://info.flagcounter.com/IKVB"><img src="https://s11.flagcounter.com/count2/IKVB/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_249/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 		    </div>
-		   
+
           <div class="col-sm-3">
             <script>
             // Function to set or retrieve the value of a cookie
@@ -398,6 +403,28 @@
           </script>
 
           </div>
+          <div id="button"></div>
+
+<script type="text/babel">
+function GifComponent() {
+    const [showGif, setShowGif] = React.useState(false);
+
+    return (
+        <div>
+            <h1 id="giff">GIF Integration with React</h1>
+            <button onClick={() => setShowGif(!showGif)}>
+                {showGif ? "Hide GIF" : "Show GIF"}
+            </button>
+            {showGif && (
+                <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" alt="GIF" />
+            )}
+        </div>
+    );
+}
+
+ReactDOM.render(<GifComponent />, document.getElementById("button"));
+</script>
+</div>
            <div id="response">
     <div id="joke-container">
         <h2>Random Joke</h2>
