@@ -14,7 +14,7 @@
 
 In this project, I have used my learnings of Lecture from 1 to 6 and it covers topics ranging from HTML, CSS, Javascript, Ajax, jQuery and have used API's to retrieve the data. I have started off with a basic html file which shows my headshot, name and other info.  Later, I have reused the work I have done as part of Lab2 like show/hide functionality for email, Displaying analog and digital clock and a JS code to view/display Gif. Later I have integrated my index.html file with the api's like JOkeAPI and Weatherbit api. In addition to that, I have enabled cookies in my index.html using Javascript to make sure that the user logging in receives a welcome if it's their first visit to the page and receives a Welcome back message followed by the last viewed timestamp if they are revisiting the page.
 
-I have uploaded the code in my private repository [https://github.com/mvk24199/mvk24199.github.io](https://github.com/mvk24199/mvk24199.github.io)
+I have uploaded the code in my public repository [https://github.com/mvk24199/mvk24199.github.io](https://github.com/mvk24199/mvk24199.github.io)
 
 
 
